@@ -103,7 +103,7 @@ class Gallery(Cog):
                 uri = uri.split("?")[0]
                 parts = uri.split(".")
                 extension = parts[-1]
-                imageTypes = ["jpg", "jpeg", "tiff", "png", "gif", "bmp"]
+                imageTypes = ["jpg", "jpeg", "tiff", "png", "gif", "gifv", "bmp", "mp4", "webm", "webp"]
                 if extension in imageTypes:
                     return
             rid = await self.config.guild(message.guild).whitelist()
