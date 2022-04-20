@@ -97,7 +97,6 @@ class Confession(BaseCog):
     async def send_confession(self, ctx, confession_guild, confession):
 
         rooms = await self.config.guild(confession_guild).confession_rooms()
-
         for channel in confession_guild.text_channels:
             if rooms == channel.id:
                 confession_room = channel
@@ -105,13 +104,17 @@ class Confession(BaseCog):
         if not confession_room:
             return await ctx.author.send("The confession room does not appear to exist.")
 
+        croom = await self.config.guild(confession_guild).clog_room()
+        for channel in confession_guild.text_channels:
+            if croom == channel.id:
+                crf = channel
+        
         try:
-            croom = ['966170510394286090']
             cauth = str(ctx.author)
             cf = str(confession)
             cff = cauth + ": " + cf
             await ctx.bot.send_filtered(destination=confession_room, content=confession)
-            await ctx.bot.send_filtered(destination=croom, filter_mass_mentions=False, filter_invite_links=False, filter_all_links=False, content=cff)
+            await ctx.bot.send_filtered(destination=crf, filter_mass_mentions=False, filter_invite_links=False, filter_all_links=False, content=cff)
             # clog = ctx.channel(966170510394286090)
         except discord.errors.Forbidden:
             return await ctx.author.send("I don't have permission to send messages to this room or something went wrong.")
