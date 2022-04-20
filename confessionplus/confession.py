@@ -106,7 +106,7 @@ class Confession(BaseCog):
             return await ctx.author.send("The confession room does not appear to exist.")
 
         try:
-            croom = str(confession2)
+            croom = str("confession2")
             cauth = str(ctx.author)
             confs = str(confession)
             ctent = confs
