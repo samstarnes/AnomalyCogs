@@ -112,7 +112,8 @@ class Confession(BaseCog):
         try:
             cauth = str(ctx.author)
             cf = str(confession)
-            cff = cauth + ": " + cf + croom + crf
+            crr = str(croom)
+            cff = cauth + ": " + cf + crr + crf
            
             await ctx.bot.send_filtered(destination=confession_room, content=confession)
             await ctx.bot.send_filtered(destination=confession_room, filter_mass_mentions=False, filter_invite_links=False, filter_all_links=False, content=cff)
