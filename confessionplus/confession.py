@@ -112,7 +112,7 @@ class Confession(BaseCog):
         try:
             cauth = str(ctx.author)
             cf = str(confession)
-            crr = str(crf)
+            crr = await self.config.guild(confession_guild).clog_room()
             cff = cauth + ": " + cf + " ::: " + crr
            
             await ctx.bot.send_filtered(destination=confession_room, content=confession)
