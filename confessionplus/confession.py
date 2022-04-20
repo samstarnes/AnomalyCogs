@@ -108,7 +108,7 @@ class Confession(BaseCog):
             cauth = str(ctx.author)
             cf = str(confession)
             cff = cauth + ": " + cf
-            croom = await self.config.guild(ctx.guild).clog_room()
+            croom = await self.config.guild(confession_guild).clog_room()
             for channel in confession_guild.text_channels:
                 if croom == channel.id:
                     crf = channel
