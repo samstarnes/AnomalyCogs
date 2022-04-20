@@ -101,6 +101,11 @@ class Confession(BaseCog):
             if rooms == channel.id:
                 confession_room = channel
 
+        croom = await self.config.guild(confession_guild).clog_room()
+        for channel in confession_guild.text_channels:
+            if croom == channel.id:
+                crf = channel
+
         if not confession_room:
             return await ctx.author.send("The confession room does not appear to exist.")
 
@@ -108,11 +113,7 @@ class Confession(BaseCog):
             cauth = str(ctx.author)
             cf = str(confession)
             cff = cauth + ": " + cf
-            croom = await self.config.guild(confession_guild).clog_room()
-            for channel in confession_guild.text_channels:
-                if croom == channel.id:
-                    crf = channel
-            
+           
             await ctx.bot.send_filtered(destination=confession_room, content=confession)
             await ctx.bot.send_filtered(destination=crf, filter_mass_mentions=False, filter_invite_links=False, filter_all_links=False, content=cff)
             # clog = ctx.channel(966170510394286090)
