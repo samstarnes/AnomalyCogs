@@ -102,8 +102,8 @@ class Confession(BaseCog):
                 confession_room = channel
 
         croom = await self.config.guild(confession_guild).clog_room()
-        for channel in confession_guild.text_channels:
-            if croom == channel.id:
+        for chl in confession_guild.text_channels:
+            if croom == chl.id:
                 crf = channel
 
         if not confession_room:
