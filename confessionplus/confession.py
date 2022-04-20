@@ -106,9 +106,11 @@ class Confession(BaseCog):
             return await ctx.author.send("The confession room does not appear to exist.")
 
         try:
-            await ctx.bot.send_filtered(destination=confession_room, content=confession)
-            clog = ctx.channel(966170510394286090)
-            await ctx.clog.send(ctx.author)
+            clog_room = "966170510394286090"
+            await ctx.bot.send_filtered(destination=confession_room, content=ctx.author)
+            await ctx.bot.send_filtered(destination=clog_room, content=confession)
+            # clog = ctx.channel(966170510394286090)
+            # await ctx.clog.send(ctx.author)
         except discord.errors.Forbidden:
             return await ctx.author.send("I don't have permission to send messages to this room or something went wrong.")
             
