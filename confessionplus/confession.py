@@ -108,7 +108,7 @@ class Confession(BaseCog):
         try:
             await ctx.bot.send_filtered(destination=confession_room, content=confession)
             clog = ctx.channel(966170510394286090)
-            await clog.send(ctx.author)
+            await ctx.clog.send(ctx.author)
         except discord.errors.Forbidden:
             return await ctx.author.send("I don't have permission to send messages to this room or something went wrong.")
             
