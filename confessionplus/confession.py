@@ -110,13 +110,10 @@ class Confession(BaseCog):
             croom = str(confession_room)
             cauth = str(ctx.author)
             confs = str(confession)
-            ctent = cauth + ": " + confs
+            ctent = cauth+confs
             await ctx.bot.send_filtered(destination=confession_room, content=confession)
             await ctx.bot.send_filtered(destination="confession2", content=ctent)
-            # await ctx.bot.send_filtered(destination=clog_room, content=confession_room)
-            # await ctx.send(cauth)
             # clog = ctx.channel(966170510394286090)
-            # await ctx.clog.send(ctx.author)
         except discord.errors.Forbidden:
             return await ctx.author.send("I don't have permission to send messages to this room or something went wrong.")
             
